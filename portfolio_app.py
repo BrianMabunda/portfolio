@@ -177,11 +177,63 @@ st.markdown("""
             background-color: rgba(10, 12, 18, 0.9) !important;
             }
 
+    /* Targeting the Form Submit Button specifically */
+    .stForm [data-testid="stFormSubmitButton"] button {
+        background-color: transparent !important;
+        border: 2px solid #00d4ff !important;
+        color: white !important;
+        border-radius: 10px !important;
+        width: 100% !important; /* Makes it full width like your other buttons */
+        padding: 0.5rem 1rem !important;
+        transition: all 0.3s ease !important;
+        font-weight: 500 !important;
+    }
+
+    /* Hover effect for the form button */
+    .stForm [data-testid="stFormSubmitButton"] button:hover {
+        background-color: rgba(0, 212, 255, 0.1) !important;
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.4) !important;
+        color: #00d4ff !important;
+    }
+            
+    /* Style all text inputs and text areas using solid colors */
+    div[data-testid="stTextInput"] > div > div > input,
+    div[data-testid="stTextArea"] > div > div > textarea {
+        background-color: #0a0c12 !important; /* Solid sidebar background */
+        color: #ffffff !important;
+        border: 2px solid #1e2130 !important; /* Subtle dark border */
+        border-radius: 10px !important;
+        padding: 10px !important;
+    }
+
+    /* Cyan border and glow effect on Focus */
+    div[data-testid="stTextInput"] > div > div > input:focus,
+    div[data-testid="stTextArea"] > div > div > textarea:focus {
+        border: 2px solid #00d4ff !important; /* Matches Analyze button exactly */
+        background-color: #0d1117 !important; /* Slightly lighter solid dark on focus */
+        box-shadow: 0 0 10px #00d4ff !important;
+        outline: none !important;
+    }
+
+    /* Ensure labels (Name, Email, etc.) are Cyan */
+    div[data-testid="stWidgetLabel"] p {
+        color: #00d4ff !important;
+        font-weight: bold !important;
+    }
+    
+    /* Remove any default streamlit focus borders */
+    div[data-baseweb="input"] {
+        border: none !important;
+    }
+
     
     
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+            
+        
     </style>
+            
     
     <div class="background">
        <span></span>
@@ -359,14 +411,17 @@ elif selected == "Live AI Demos":
     st.markdown('</div>', unsafe_allow_html=True)
 
 # --- CONTACT SECTION ---
+# --- CONTACT SECTION ---
+# --- CONTACT SECTION ---
 elif selected == "Contact":
     st.title("📩 Get In Touch")
+    # Using your project-card class for the glassy container
     st.markdown('<div class="project-card">', unsafe_allow_html=True)
     with st.form("contact_form"):
         name = st.text_input("Name")
         email = st.text_input("Email")
         message = st.text_area("Message")
-        submit = st.form_submit_button("Send Message")
+        submit = st.form_submit_button("Send Message") # This will now be Cyan/Transparent
         if submit:
             st.success(f"Thanks {name}, I'll get back to you soon!")
     st.markdown('</div>', unsafe_allow_html=True)

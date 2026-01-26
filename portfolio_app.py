@@ -258,7 +258,7 @@ with st.sidebar:
     
     selected = option_menu(
         menu_title=None,
-        options=["About Me", "Projects", "Live AI Demos", "Contact"],
+        options=["About Me", "Projects", "Contact"],
         icons=["person", "code-slash", "cpu", "envelope"],
         default_index=0,
         styles={
@@ -297,21 +297,42 @@ if selected == "About Me":
         st.subheader("AI Engineer | Full-Stack Developer | Computer Systems Engineer")
         st.markdown("""
         <div class="project-card">
-        Results-driven AI Engineer with a strong foundation in Computer Systems Engineering. 
-        I specialize in bridging the gap between R&D prototypes and scalable, containerized applications.
-        Based on my experience, I excel at building production-grade AI solutions, from RAG-based 
-        LLM architectures to high-accxuracy object detection systems.
+        Results-driven Computer Systems Engineer specializing in AI-integrated Full-Stack Development.
+        I bridge the gap between complex R&D prototypes and scalable, production-grade applications using the FastAPI/React stack and Azure DevOps. 
+        My expertise ranges from architecting Agentic RAG workflows and high-accuracy Computer Vision (YOLO) systems to building the robust data pipelines and containerized infrastructure that power them. 
+        I am passionate about transforming unstructured data into intuitive, user-centric tools that drive informed decision-making.
         </div>
         """, unsafe_allow_html=True)
         
         st.markdown("### 🛠️ Core Expertise")
-        col_a, col_b = st.columns(2)
+        col_a, col_b, col_c = st.columns(3)
         with col_a:
-            st.markdown("<p style='color:#00d4ff !important;'><b>AI/ML</b></p>", unsafe_allow_html=True)
-            st.write("RAG, Agentic Workflows, YOLO v5/v6, MediaPipe, DeepSort, PySpark")
+            st.markdown("<p style='color:#00d4ff !important;'><b>Software Engineering</b></p>", unsafe_allow_html=True)
+            st.markdown(
+                        "<tr> Python (FastAPI, Flask) </tr>"
+                        "<tr>  React</tr>"
+                        "<tr>React Native </tr>"
+                        "<tr> SQL </tr>"
+                        "<tr> RESTful API Design </tr>",
+                        unsafe_allow_html=True)  # Spacer
         with col_b:
-            st.markdown("<p style='color:#00d4ff !important;'><b>Infrastructure</b></p>", unsafe_allow_html=True)
-            st.write("Docker, FastAPI, Vercel, Azure, CI/CD, Apache Airflow")
+            st.markdown("<p style='color:#00d4ff !important;'><b>AI and Data</b></p>", unsafe_allow_html=True)
+            st.markdown(
+                        "<tr style='text-color:white'> RAG Architectures </tr>"
+                        "<tr> LLMs</tr>"
+                        "<tr>Computer Vision (YOLOv5/v8, MediaPipe)</tr>"
+                        "<tr> Machine Learnig </tr>",
+                        unsafe_allow_html=True)  # Spacer
+        with col_c:
+            st.markdown("<p style='color:#00d4ff !important;'><b>Data & DevOps</b></p>", unsafe_allow_html=True)
+            st.markdown(
+                        "<tr> Azure DevOps </tr>"
+                        "<tr>  Docker</tr>"
+                        "<tr>React Native </tr>"
+                        "<tr> CI/CD Pipelines </tr>"
+                        "<tr> Apache Airflow </tr>",
+                        unsafe_allow_html=True)  # Spacer
+    
 
     with col2:
         # Top Right Tile: Certifications
@@ -354,7 +375,7 @@ elif selected == "Projects":
             "img": fixit_img_base64
         },
         {
-            "title": "ASL Speller: Sign Recognition",
+            "title": "Sign Languange Speller - Sign Recognition",
             "desc": "Shifted heavy image processing to the client-side using MediaPipe, reducing server latency by 40%.",
             "tech": "MediaPipe, Scikit-learn, Docker, FastAPI, React",
             "link": "https://sign-language-speller-ui.vercel.app/",
@@ -387,7 +408,7 @@ elif selected == "Projects":
                             </div>
                         </div>
             """, unsafe_allow_html=True)
-            st.link_button(f"Launch {proj['title'].split('-')[0]}", proj['link'])
+            st.link_button(f"Launch :{proj['title'].split('-')[0]}", proj['link'])
             st.write("") 
 
 # --- LIVE AI DEMOS SECTION ---

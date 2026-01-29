@@ -297,10 +297,20 @@ if selected == "About Me":
         st.subheader("AI Engineer | Full-Stack Developer | Computer Systems Engineer")
         st.markdown("""
         <div class="project-card">
-        Results-driven Computer Systems Engineer specializing in AI-integrated Full-Stack Development.
-        I bridge the gap between complex R&D prototypes and scalable, production-grade applications using the FastAPI/React stack and Azure DevOps. 
-        My expertise ranges from architecting Agentic RAG workflows and high-accuracy Computer Vision (YOLO) systems to building the robust data pipelines and containerized infrastructure that power them. 
-        I am passionate about transforming unstructured data into intuitive, user-centric tools that drive informed decision-making.
+        <p>
+        I am a Computer Systems Engineer on a mission to build AI that makes a real difference in people's lives. I don't just build software; I build tools that solve problems and improve human wellbeing.
+
+        My expertise lies in the intersection of Artificial Intelligence and User Experience. Whether I am developing autonomous AI Agents that think through complex tasks or creating Computer Vision systems that improve accessibility for the hearing impaired, my focus is always on the end-user.
+
+        I believe that the best technology is:
+        </p>
+    
+        <li><p><b>Purpose-driven:</b> Solving real-world challenges in mental health and communication.</p></li>
+        <li><p><b>Private & Secure:</b> Ensuring user data is handled with the highest level of care.</p></li>
+        <li><p><b>High Performance:</b> Using optimized code to make AI fast and accessible on any device.</p></li>
+
+        I am always looking for ways to use my skills in Python, JavaScript, and LLM Ops to create a positive impact.
+
         </div>
         """, unsafe_allow_html=True)
         
@@ -369,16 +379,20 @@ elif selected == "Projects":
     projects = [
         {
             "title": "FixIT.core - RAG Diagnostic Tool",
-            "desc": "Engineered a custom RAG agent that parses technical manuals to provide context-aware solutions with a state-driven React frontend.",
-            "tech": "Agentic UI, RAG Agent, Vector Search, FastAPI, Vercel",
-            "link": "https://fix-it-core.vercel.app/",
+            "desc": "I built a smart AI assistant that reads technical manuals to solve complex problems instantly. It features an 'Agentic UI'—where the interface dynamically changes to guide the user through a solution based on the AI's reasoning. This demonstrates my ability to build autonomous AI agents that handle multi-step tasks.",
+            "AI":"RAG (Retrieval-Augmented Generation), Agentic Logic, Vector Search",
+            "web":" FastAPI(Python), React, Docker, Vercel",
+            "link": "https://sign-language-speller-ui.vercel.app/",
+            "github":"https://github.com/BrianMabunda/sign_language_speller_UI",
             "img": fixit_img_base64
         },
         {
             "title": "Sign Languange Speller - Sign Recognition",
-            "desc": "Shifted heavy image processing to the client-side using MediaPipe, reducing server latency by 40%.",
-            "tech": "MediaPipe, Scikit-learn, Docker, FastAPI, React",
+            "desc": "An AI tool designed for accessibility that recognizes sign language gestures and turns them into text in real-time. I optimized the system to run directly on the user's device, which reduced latency by 40% and improved data privacy. This project showcases my experience in Computer Vision and building tools that help people communicate.",
+            "AI":"Computer Vision, MediaPipe, Scikit-learn",
+            "web":" FastAPI(Python), React, Docker, Vercel",
             "link": "https://sign-language-speller-ui.vercel.app/",
+            "github":"https://github.com/BrianMabunda/sign_language_speller_UI",
             "img": asl_img_base64
         }
     ]
@@ -403,7 +417,9 @@ elif selected == "Projects":
                                 <div style="flex: 1.5; min-width: 300px;">
                                     <h3>{proj['title']}</h3>
                                     <p>{proj['desc']}</p>
-                                    <p><b>Tech:</b> {proj['tech']}</p>git
+                                    <p><b>AI:</b> {proj['AI']}</p>
+                                    <p><b>web:</b> {proj['web']}</p>
+                                    <a href="{proj['github']}" style="color: #00d4ff; text-decoration: none;"> GitHub Repo</a>
                                 </div>
                             </div>
                         </div>

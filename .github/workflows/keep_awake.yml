@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Send a request to the Streamlit app
-        run: curl -s https://streamlit.app > /dev/null
+        run: curl -s https://brianmabunda.streamlit.app/ > /dev/null

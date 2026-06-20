@@ -382,8 +382,8 @@ elif selected == "Projects":
             "desc": "I built a smart AI assistant that reads technical manuals to solve complex problems instantly. It features an 'Agentic UI'—where the interface dynamically changes to guide the user through a solution based on the AI's reasoning. This demonstrates my ability to build autonomous AI agents that handle multi-step tasks.",
             "AI":"RAG (Retrieval-Augmented Generation), Agentic Logic, Vector Search",
             "web":" FastAPI(Python), React, Docker, Vercel",
-            "link": "https://sign-language-speller-ui.vercel.app/",
-            "github":"https://github.com/BrianMabunda/sign_language_speller_UI",
+            "link": "https://fix-it-core.vercel.app/",
+            "github":"https://github.com/BrianMabunda/FixIT.core",
             "img": fixit_img_base64
         },
         {

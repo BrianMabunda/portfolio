@@ -1,0 +1,14 @@
+name: Keep Streamlit App Awake
+
+on:
+  schedule:
+    # Runs every 8 hours (Streamlit sleeps after 12 hours of inactivity)
+    - cron: '0 */8 * * *'
+  workflow_dispatch: # Allows you to trigger this manually for testing
+
+jobs:
+  ping_app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a request to the Streamlit app
+        run: curl -s https://streamlit.app > /dev/null

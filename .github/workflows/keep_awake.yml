@@ -2,7 +2,7 @@ name: Keep Streamlit App Awake
 
 on:
   schedule:
-    # Runs every 8 hours (At minute 0 past every 8th hour)
+    # Runs every 8 hours
     - cron: '0 */8 * * *'
   workflow_dispatch: # Allows manual testing
 
@@ -16,7 +16,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-node: '20'
+          node-version: '22' # Fixed typo and upgraded version
 
       - name: Install Playwright
         run: |
@@ -31,14 +31,14 @@ jobs:
             const browser = await chromium.launch({ headless: true });
             const page = await browser.newPage();
             console.log('Navigating to app...');
-            await page.goto('https://brianmabunda.streamlit.app/', { waitUntil: 'networkidle' });
+            await page.goto('https://streamlit.app', { waitUntil: 'networkidle' });
             
             // Check if the 'Yes, get this app back up' button is visible
             const wakeButton = page.locator('button:has-text(\"Yes, get this app back up\")');
             if (await wakeButton.isVisible()) {
               console.log('App was asleep. Clicking wake up button...');
               await wakeButton.click();
-              await page.waitForTimeout(10000); // Wait 10 seconds for it to boot
+              await page.waitForTimeout(15000); // Wait 15 seconds to finish booting
             } else {
               console.log('App is already awake!');
             }

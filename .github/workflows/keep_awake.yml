@@ -2,13 +2,46 @@ name: Keep Streamlit App Awake
 
 on:
   schedule:
-    # Runs every 8 hours (Streamlit sleeps after 12 hours of inactivity)
-    - cron: '0 */2 * * *'
-  workflow_dispatch: # Allows you to trigger this manually for testing
+    # Runs every 8 hours (At minute 0 past every 8th hour)
+    - cron: '0 */8 * * *'
+  workflow_dispatch: # Allows manual testing
 
 jobs:
-  ping_app:
+  wake_app:
     runs-on: ubuntu-latest
     steps:
-      - name: Send a request to the Streamlit app
-        run: curl -s https://brianmabunda.streamlit.app/ > /dev/null
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-node: '20'
+
+      - name: Install Playwright
+        run: |
+          npm install playwright
+          npx playwright install chromium
+
+      - name: Open App and Click Wake Button
+        run: |
+          node -e "
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            const page = await browser.newPage();
+            console.log('Navigating to app...');
+            await page.goto('https://brianmabunda.streamlit.app/', { waitUntil: 'networkidle' });
+            
+            // Check if the 'Yes, get this app back up' button is visible
+            const wakeButton = page.locator('button:has-text(\"Yes, get this app back up\")');
+            if (await wakeButton.isVisible()) {
+              console.log('App was asleep. Clicking wake up button...');
+              await wakeButton.click();
+              await page.waitForTimeout(10000); // Wait 10 seconds for it to boot
+            } else {
+              console.log('App is already awake!');
+            }
+            await browser.close();
+          })();
+          "
